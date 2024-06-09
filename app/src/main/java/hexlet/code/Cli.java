@@ -8,6 +8,12 @@ public class Cli {
         Scanner scanner = new Scanner(System.in);
         System.out.println("May I have your name?");
         String answer = scanner.nextLine();
-        System.out.println(String.format("Hello, %s!", answer));
+        System.out.printf("Hello, %s!", answer);
+    }
+
+    public static String getAndSaveUserName() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("May I have your name?");
+        return scanner.nextLine();
     }
 }
