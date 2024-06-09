@@ -10,10 +10,4 @@ public class Cli {
         String answer = scanner.nextLine();
         System.out.printf("Hello, %s!", answer);
     }
-
-    public static String getAndSaveUserName() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("May I have your name?");
-        return scanner.nextLine();
-    }
 }
