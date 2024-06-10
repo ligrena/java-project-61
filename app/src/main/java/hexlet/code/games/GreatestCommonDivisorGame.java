@@ -23,22 +23,17 @@ public class GreatestCommonDivisorGame {
             Engine.answer(yourAnswer);
 
             int gcd = getGCD(numberA, numberB);
-            correctOrIncorrect(gcd, yourAnswer, userName);
+
+            if (gcd == yourAnswer) {
+                System.out.println(Engine.CORRECT_ANSWER);
+                sumAnswer = sumAnswer + 1;
+            } else {
+                System.out.printf(Engine.WRONG_ANSWER, yourAnswer, value, userName);
+                sumAnswer = sumAnswer - 1;
+            }
         }
         if (sumAnswer == 3) {
-            System.out.printf("Congratulations, %s!", userName);
-        }
-    }
-
-    private static void correctOrIncorrect(int value, int yourAnswer, String userName) {
-        int sumAnswer = 0;
-
-        if (value == yourAnswer) {
-            System.out.println(Engine.CORRECT_ANSWER);
-            sumAnswer = sumAnswer + 1;
-        } else {
-            System.out.printf(Engine.WRONG_ANSWER, yourAnswer, value, userName);
-            sumAnswer = sumAnswer - 1;
+            System.out.printf("Congratulations, %s!\n", userName);
         }
     }
 

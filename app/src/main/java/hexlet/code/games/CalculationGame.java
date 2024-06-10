@@ -25,37 +25,48 @@ public class CalculationGame {
                 case 0 : operationSwitch = "+";
                     int value = numberA + numberB;
                     Engine.question(String.format("%s %s %s", numberA, operationSwitch, numberB));
-                    correctOrIncorrect(value, scanner, userName);
+                    int yourAnswer = scanner.nextInt();
+                    Engine.answer(yourAnswer);
+                    if (value == yourAnswer) {
+                        System.out.println(Engine.CORRECT_ANSWER);
+                        sumAnswer = sumAnswer + 1;
+                    } else {
+                        System.out.printf(Engine.WRONG_ANSWER, yourAnswer, value, userName);
+                        sumAnswer = sumAnswer - 1;
+                    }
                     break;
                 case 1 : operationSwitch = "-";
                     value = numberA - numberB;
                     Engine.question(String.format("%s %s %s", numberA, operationSwitch, numberB));
-                    correctOrIncorrect(value, scanner, userName);
+                    yourAnswer = scanner.nextInt();
+                    Engine.answer(yourAnswer);
+                    if (value == yourAnswer) {
+                        System.out.println(Engine.CORRECT_ANSWER);
+                        sumAnswer = sumAnswer + 1;
+                    } else {
+                        System.out.printf(Engine.WRONG_ANSWER, yourAnswer, value, userName);
+                        sumAnswer = sumAnswer - 1;
+                    }
                     break;
                 case 2 : operationSwitch = "*";
                     value = numberA * numberB;
                     Engine.question(String.format("%s %s %s", numberA, operationSwitch, numberB));
-                    correctOrIncorrect(value, scanner, userName);
+                    yourAnswer = scanner.nextInt();
+                    Engine.answer(yourAnswer);
+                    if (value == yourAnswer) {
+                        System.out.println(Engine.CORRECT_ANSWER);
+                        sumAnswer = sumAnswer + 1;
+                    } else {
+                        System.out.printf(Engine.WRONG_ANSWER, yourAnswer, value, userName);
+                        sumAnswer = sumAnswer - 1;
+                    }
                     break;
                 default:
                     break;
             }
         }
         if (sumAnswer == 3) {
-            System.out.printf("Congratulations, %s!", userName);
-        }
-    }
-
-    private static void correctOrIncorrect(int value, Scanner scanner, String userName) {
-        int sumAnswer = 0;
-        int yourAnswer = scanner.nextInt();
-        Engine.answer(yourAnswer);
-        if (value == yourAnswer) {
-            System.out.println(Engine.CORRECT_ANSWER);
-            sumAnswer = sumAnswer + 1;
-        } else {
-            System.out.printf(Engine.WRONG_ANSWER, yourAnswer, value, userName);
-            sumAnswer = sumAnswer - 1;
+            System.out.printf("Congratulations, %s!\n", userName);
         }
     }
 }
