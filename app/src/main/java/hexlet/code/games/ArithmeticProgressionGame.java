@@ -3,18 +3,18 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 
 import java.util.Random;
-import java.util.Scanner;
 
 public class ArithmeticProgressionGame {
 
-    public static void arithmeticProgressionGame(String userName) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("What number is missing in the progression?\n");
+    private static final String INFO_GAME = "What number is missing in the progression?\n";
 
+    public static void arithmeticProgressionGame() {
         Random random = new Random();
-        int sumAnswer = 0;
+        int numberQuestions = Engine.COUNT_ROUND_GAME;
 
-        for (int i = 1; i <= 3; i++) {
+        String[][] questionsAndAnswers = new String[numberQuestions][2];
+
+        for (int i = 0; i < numberQuestions; i++) {
             int length = 10;
             int firstNumber = random.nextInt(100);
             int diff = random.nextInt(19) + 1;
@@ -22,26 +22,10 @@ public class ArithmeticProgressionGame {
 
             int[] progression = generateProgression(firstNumber, diff, length);
 
-            String value = buildQuestion(progression, skipNumber);
-            Engine.question(value);
-
-            String numberAnswer = scanner.nextLine();
-            Engine.answer(numberAnswer);
-
-            value = Integer.toString(firstNumber + diff * skipNumber);
-
-            if (value.equals(numberAnswer)) {
-                System.out.println(Engine.CORRECT_ANSWER);
-                sumAnswer = sumAnswer + 1;
-            } else {
-                System.out.printf(Engine.WRONG_ANSWER, numberAnswer, value, userName);
-                sumAnswer = sumAnswer - 1;
-            }
+            questionsAndAnswers[i][0] = buildQuestion(progression, skipNumber);
+            questionsAndAnswers[i][1] = Integer.toString(firstNumber + diff * skipNumber);
         }
-
-        if (sumAnswer == 3) {
-            System.out.printf("Congratulations, %s!", userName);
-        }
+        Engine.startGame(INFO_GAME, questionsAndAnswers);
     }
 
     private static int[] generateProgression(int firstNumber, int diff, int length) {

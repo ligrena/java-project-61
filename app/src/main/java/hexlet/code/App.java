@@ -1,9 +1,6 @@
 package hexlet.code;
 
-import hexlet.code.games.ArithmeticProgressionGame;
-import hexlet.code.games.CalculationGame;
-import hexlet.code.games.EvenParityGame;
-import hexlet.code.games.GreatestCommonDivisorGame;
+import hexlet.code.games.*;
 
 import java.util.Scanner;
 
@@ -18,6 +15,7 @@ public class App {
     private static final String SECOND_GAME = "3 - Calc";
     private static final String THIRD_GAME = "4 - GCD";
     private static final String FOURTH_GAME = "5 - Progression";
+    private static final String FIFTH_GAME = "6 - Prime";
 
     public static void main(String[] args) {
         System.out.println(WELCOME_TEXT);
@@ -26,10 +24,9 @@ public class App {
     }
 
     public static void selectMenuApp() {
-        System.out.printf("%s\n%s\n%s\n%s\n%s\n%s\n%s\n",
+        System.out.printf("%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n",
                 SELECT_TEXT_GAME, FIRST_COMMAND,
-                FIRST_GAME, SECOND_GAME, THIRD_GAME, FOURTH_GAME,
-                EXIT_COMMAND);
+                FIRST_GAME, SECOND_GAME, THIRD_GAME, FOURTH_GAME, FIFTH_GAME, EXIT_COMMAND);
     }
 
     private static void selectGame() {
@@ -38,25 +35,14 @@ public class App {
         System.out.printf("%s %s\n", YOUR_ANSWER, selectCommand);
 
         switch (selectCommand) {
-            case 0:
-                break;
-            case 1:
-                Cli.getUserName();
-                break;
-            case 2:
-                EvenParityGame.evenGame(Engine.getAndSaveUserName());
-                break;
-            case 3:
-                CalculationGame.calculationGame(Engine.getAndSaveUserName());
-                break;
-            case 4:
-                GreatestCommonDivisorGame.gcdGame(Engine.getAndSaveUserName());
-                break;
-            case 5:
-                ArithmeticProgressionGame.arithmeticProgressionGame(Engine.getAndSaveUserName());
-                break;
-            default:
-                break;
+            case 0 -> System.exit(0);
+            case 1 -> Cli.getUserName();
+            case 2 -> EvenParityGame.evenGame();
+            case 3 -> CalculationGame.calculationGame();
+            case 4 -> GreatestCommonDivisorGame.gcdGame();
+            case 5 -> ArithmeticProgressionGame.arithmeticProgressionGame();
+            case 6 -> PrimeGame.primeGame();
+            default -> System.out.println("Sorry, number game is not correct");
         }
     }
 }

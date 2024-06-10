@@ -1,40 +1,27 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
-
 import java.util.Random;
-import java.util.Scanner;
 
 public class GreatestCommonDivisorGame {
 
-    public static void gcdGame(String userName) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Find the greatest common divisor of given numbers.\n");
+    private static final String INFO_GAME = "Find the greatest common divisor of given numbers.\n";
 
-        int sumAnswer = 0;
+    public static void gcdGame() {
+        Random random = new Random();
+        int numberQuestions = Engine.COUNT_ROUND_GAME;
 
-        for (int i = 1; i <= 3; i++) {
-            int numberA = new Random().nextInt(100);
-            int numberB = new Random().nextInt(100);
+        String[][] questionsAndAnswers = new String[numberQuestions][2];
 
-            String value = String.format("%s %s", numberA, numberB);
-            Engine.question(value);
-            int yourAnswer = scanner.nextInt();
-            Engine.answer(yourAnswer);
-
+        for (int i = 0; i < numberQuestions; i++) {
+            int numberA = random.nextInt(100);
+            int numberB = random.nextInt(100);
             int gcd = getGCD(numberA, numberB);
 
-            if (gcd == yourAnswer) {
-                System.out.println(Engine.CORRECT_ANSWER);
-                sumAnswer = sumAnswer + 1;
-            } else {
-                System.out.printf(Engine.WRONG_ANSWER, yourAnswer, value, userName);
-                sumAnswer = sumAnswer - 1;
-            }
+            questionsAndAnswers[i][0] = String.format("%s %s", numberA, numberB);
+            questionsAndAnswers[i][1] = Integer.toString(gcd);
         }
-        if (sumAnswer == 3) {
-            System.out.printf("Congratulations, %s!\n", userName);
-        }
+        Engine.startGame(INFO_GAME, questionsAndAnswers);
     }
 
     private static int getGCD(int numberA, int numberB) {

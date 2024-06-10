@@ -3,70 +3,44 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 
 import java.util.Random;
-import java.util.Scanner;
 
 public class CalculationGame {
 
-    public static void calculationGame(String userName) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("What is the result of the expression?\n");
+    private static final String INFO_GAME = "What is the result of the expression?\n";
 
+    public static void calculationGame() {
         Random random = new Random();
-        Random randomOperation = new Random();
-        int sumAnswer = 0;
-        String operationSwitch = "";
+        int numberQuestions = Engine.COUNT_ROUND_GAME;
 
-        for (int i = 1; i <= 3; i++) {
+        String[][] questionsAndAnswers = new String[numberQuestions][2];
+
+        for (int i = 0; i < numberQuestions; i++) {
             int numberA = random.nextInt(100);
             int numberB = random.nextInt(100);
-            int operation = randomOperation.nextInt(2);
+            char[] operations = {'+', '-', '*'};
+            char operation = operations[random.nextInt(operations.length)];
 
-            switch (operation) {
-                case 0 : operationSwitch = "+";
-                    int value = numberA + numberB;
-                    Engine.question(String.format("%s %s %s", numberA, operationSwitch, numberB));
-                    int yourAnswer = scanner.nextInt();
-                    Engine.answer(yourAnswer);
-                    if (value == yourAnswer) {
-                        System.out.println(Engine.CORRECT_ANSWER);
-                        sumAnswer = sumAnswer + 1;
-                    } else {
-                        System.out.printf(Engine.WRONG_ANSWER, yourAnswer, value, userName);
-                        sumAnswer = sumAnswer - 1;
-                    }
-                    break;
-                case 1 : operationSwitch = "-";
-                    value = numberA - numberB;
-                    Engine.question(String.format("%s %s %s", numberA, operationSwitch, numberB));
-                    yourAnswer = scanner.nextInt();
-                    Engine.answer(yourAnswer);
-                    if (value == yourAnswer) {
-                        System.out.println(Engine.CORRECT_ANSWER);
-                        sumAnswer = sumAnswer + 1;
-                    } else {
-                        System.out.printf(Engine.WRONG_ANSWER, yourAnswer, value, userName);
-                        sumAnswer = sumAnswer - 1;
-                    }
-                    break;
-                case 2 : operationSwitch = "*";
-                    value = numberA * numberB;
-                    Engine.question(String.format("%s %s %s", numberA, operationSwitch, numberB));
-                    yourAnswer = scanner.nextInt();
-                    Engine.answer(yourAnswer);
-                    if (value == yourAnswer) {
-                        System.out.println(Engine.CORRECT_ANSWER);
-                        sumAnswer = sumAnswer + 1;
-                    } else {
-                        System.out.printf(Engine.WRONG_ANSWER, yourAnswer, value, userName);
-                        sumAnswer = sumAnswer - 1;
-                    }
-                    break;
-                default:
-                    break;
-            }
+            questionsAndAnswers[i][0] = String.format("%s %s %s", numberA, operation, numberB);
+            questionsAndAnswers[i][1] = Integer.toString(getCalculation(operation, numberA, numberB));
         }
-        if (sumAnswer == 3) {
-            System.out.printf("Congratulations, %s!\n", userName);
+        Engine.startGame(INFO_GAME, questionsAndAnswers);
+    }
+
+    private static int getCalculation(char operationSwitch, int numberA, int numberB) {
+        switch (operationSwitch) {
+            case '+' -> {
+                return numberA + numberB;
+            }
+            case '-' -> {
+                return numberA - numberB;
+            }
+            case '*' -> {
+                return numberA * numberB;
+            }
+            default -> {
+                throw new RuntimeException(
+                        String.format("Result for operation with %s is not correct", operationSwitch));
+            }
         }
     }
 }

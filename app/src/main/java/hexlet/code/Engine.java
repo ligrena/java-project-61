@@ -7,28 +7,29 @@ public class Engine {
     public static final String WRONG_ANSWER =
             "'%s' is wrong answer ;(. Correct answer was '%s'.\nLet's try again, %s!\n";
     public static final String CORRECT_ANSWER = "Correct!";
+    public static final int COUNT_ROUND_GAME = 3;
 
-    public static String getAndSaveUserName() {
-        Scanner scanner = new Scanner(System.in);
+    public static void startGame(String infoGame, String[][] questionAndAnswer) {
         System.out.println("May I have your name?");
-        String answer = scanner.nextLine();
-        System.out.printf("Hello, %s!\n", answer);
-        return answer;
-    }
+        Scanner scanner = new Scanner(System.in);
+        String userName = scanner.nextLine();
 
-    public static void answer(String yourAnswer) {
-        System.out.printf("Your answer: %s\n", yourAnswer);
-    }
+        System.out.printf("Hello, %s!\n", userName);
+        System.out.println(infoGame);
 
-    public static void answer(int yourAnswer) {
-        System.out.printf("Your answer: %s\n", yourAnswer);
-    }
+        for (int i = 0; i < COUNT_ROUND_GAME; i++) {
+            System.out.printf("Question: %s\n", questionAndAnswer[i][0]);
+            String userAnswer = scanner.nextLine();
+            System.out.printf("Your answer: %s\n", userAnswer);
 
-    public static void question(int value) {
-        System.out.printf("Question: %s\n", value);
-    }
-
-    public static void question(String value) {
-        System.out.printf("Question: %s\n", value);
+            if (userAnswer.equals(questionAndAnswer[i][1])) {
+                System.out.println(CORRECT_ANSWER);
+            } else {
+                System.out.printf(WRONG_ANSWER, userAnswer, questionAndAnswer[i][1], userName);
+                return;
+            }
+        }
+        System.out.printf("Congratulations, %s!", userName);
+        scanner.close();
     }
 }
