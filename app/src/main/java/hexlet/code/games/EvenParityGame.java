@@ -5,7 +5,7 @@ import hexlet.code.Engine;
 import java.util.Random;
 import java.util.Scanner;
 
-public class EvenParity {
+public class EvenParityGame {
 
     public static void evenGame(String userName) {
         Scanner scanner = new Scanner(System.in);

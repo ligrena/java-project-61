@@ -5,7 +5,7 @@ import hexlet.code.Engine;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Calculation {
+public class CalculationGame {
 
     public static void calculationGame(String userName) {
         Scanner scanner = new Scanner(System.in);

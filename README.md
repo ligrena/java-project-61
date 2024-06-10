@@ -3,3 +3,4 @@
 
 Example Even game: https://asciinema.org/a/OnfNYzLlbWs09cImJOkBy6PR7 
 Example Calculation game: https://asciinema.org/a/RNbal1aAE0xdaJYxsDPAbdcwL
+Example Greatest Common Divisor game: https://asciinema.org/a/3MCqBtOvKGBCCuy78QFkx0ui6
