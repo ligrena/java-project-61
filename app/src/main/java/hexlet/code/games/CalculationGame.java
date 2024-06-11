@@ -7,6 +7,7 @@ import java.util.Random;
 public class CalculationGame {
 
     private static final String INFO_GAME = "What is the result of the expression?\n";
+    private static final int RANDOM = 100;
 
     public static void calculationGame() {
         Random random = new Random();
@@ -15,8 +16,8 @@ public class CalculationGame {
         String[][] questionsAndAnswers = new String[numberQuestions][2];
 
         for (int i = 0; i < numberQuestions; i++) {
-            int numberA = random.nextInt(100);
-            int numberB = random.nextInt(100);
+            int numberA = random.nextInt(RANDOM) + 1;
+            int numberB = random.nextInt(RANDOM) + 1;
             char[] operations = {'+', '-', '*'};
             char operation = operations[random.nextInt(operations.length)];
 
