@@ -29,11 +29,10 @@ public class GreatestCommonDivisorGame {
         int a = Math.max(numberA, numberB);
         int b = Math.min(numberA, numberB);
 
-        result = b;
-        while (a % b != 0) {
-            result = a % b;
-            a = b;
-            b = result;
+        for (int i = 1; i <= Math.min(a, b); i++) {
+            if (a % i == 0 && b % i == 0) {
+                result = i;
+            }
         }
         return result;
     }
