@@ -3,8 +3,6 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 import hexlet.code.Utils;
 
-import java.util.Random;
-
 public class CalculationGame {
 
     private static final String INFO_GAME = "What is the result of the expression?\n";

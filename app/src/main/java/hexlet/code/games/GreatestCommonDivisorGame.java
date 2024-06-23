@@ -3,8 +3,6 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 import hexlet.code.Utils;
 
-import java.util.Random;
-
 public class GreatestCommonDivisorGame {
 
     private static final String INFO_GAME = "Find the greatest common divisor of given numbers.\n";
