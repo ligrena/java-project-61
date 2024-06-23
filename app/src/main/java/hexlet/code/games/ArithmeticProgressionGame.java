@@ -1,6 +1,7 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
+import hexlet.code.Utils;
 
 import java.util.Random;
 
@@ -12,15 +13,14 @@ public class ArithmeticProgressionGame {
     private static final int RANDOM_DIFF = 19;
 
     public static void arithmeticProgressionGame() {
-        Random random = new Random();
         int numberQuestions = Engine.COUNT_ROUND_GAME;
 
         String[][] questionsAndAnswers = new String[numberQuestions][2];
 
         for (int i = 0; i < numberQuestions; i++) {
-            int firstNumber = random.nextInt(RANDOM);
-            int diff = random.nextInt(RANDOM_DIFF) + 1;
-            int skipNumber = random.nextInt(LENGTH);
+            int firstNumber = Utils.getRandomNumber(RANDOM);
+            int diff = Utils.getRandomNumber(RANDOM_DIFF) + 1;
+            int skipNumber = Utils.getRandomNumber(LENGTH);
 
             int[] progression = generateProgression(firstNumber, diff, LENGTH);
 

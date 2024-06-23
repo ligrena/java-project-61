@@ -30,14 +30,10 @@ public class App {
 
     public static void main(String[] args) {
         System.out.println(WELCOME_TEXT);
-        selectMenuApp();
-        selectGame();
-    }
-
-    public static void selectMenuApp() {
         System.out.printf("%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n",
                 SELECT_TEXT_GAME, FIRST_COMMAND,
                 FIRST_GAME, SECOND_GAME, THIRD_GAME, FOURTH_GAME, FIFTH_GAME, EXIT_COMMAND);
+        selectGame();
     }
 
     private static void selectGame() {

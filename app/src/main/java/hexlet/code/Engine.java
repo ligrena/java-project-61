@@ -29,7 +29,7 @@ public class Engine {
                 return;
             }
         }
-        System.out.printf("Congratulations, %s!", userName);
+        System.out.printf("Congratulations, %s!\n", userName);
         scanner.close();
     }
 }

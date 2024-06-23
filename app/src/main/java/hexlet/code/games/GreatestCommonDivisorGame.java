@@ -1,6 +1,8 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
+import hexlet.code.Utils;
+
 import java.util.Random;
 
 public class GreatestCommonDivisorGame {
@@ -9,14 +11,13 @@ public class GreatestCommonDivisorGame {
     private static final int RANDOM = 100;
 
     public static void gcdGame() {
-        Random random = new Random();
         int numberQuestions = Engine.COUNT_ROUND_GAME;
 
         String[][] questionsAndAnswers = new String[numberQuestions][2];
 
         for (int i = 0; i < numberQuestions; i++) {
-            int numberA = random.nextInt(RANDOM);
-            int numberB = random.nextInt(RANDOM);
+            int numberA = Utils.getRandomNumber(RANDOM);
+            int numberB = Utils.getRandomNumber(RANDOM);
             int gcd = getGCD(numberA, numberB);
 
             questionsAndAnswers[i][0] = String.format("%s %s", numberA, numberB);
